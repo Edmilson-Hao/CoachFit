@@ -1,0 +1,124 @@
+:root{
+        --md-sys-primary: #0B57D0; /* Azul Material */
+        --md-sys-on-primary: #ffffff;
+        --md-sys-surface: #ffffff;
+        --md-sys-on-surface: #1f1f1f;
+        --md-sys-outline: #e0e0e0;
+        --md-sys-elevation-1: 0 1px 2px rgba(0,0,0,.12), 0 1px 3px rgba(0,0,0,.24);
+        --radius-xl: 20px;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --md-sys-surface: #111317;
+          --md-sys-on-surface: #E5E7EB;
+          --md-sys-outline: #2A2E35;
+          --md-sys-elevation-1: 0 1px 2px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.4);
+        }
+        body{ background: radial-gradient(1200px 800px at 80% -200px, rgba(11,87,208,.20), transparent), #0a0c10; }
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body{
+        margin: 0;
+        font-family: Roboto, system-ui, -apple-system, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif;
+        background: #f7f8fa;
+        color: var(--md-sys-on-surface);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container{
+        min-height: 100dvh; /* mobile-safe */
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .card{
+        width: 100%;
+        max-width: 440px;
+        background: var(--md-sys-surface);
+        border: 1px solid var(--md-sys-outline);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--md-sys-elevation-1);
+        padding: 28px;
+      }
+
+      .brand{
+        display: flex; align-items: center; gap: 12px;
+        margin-bottom: 8px;
+      }
+      .logo{
+        width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+        color: white; font-weight: 700;
+        box-shadow: 0 6px 16px rgba(11,87,208,.35);
+      }
+
+      h1{ font-size: 1.375rem; line-height: 1.2; margin: 0; }
+      p.muted{ margin: 8px 0 18px; color: #6b7280; }
+
+      .divider{ position: relative; margin: 20px 0; text-align: center; color: #9aa3af; }
+      .divider::before, .divider::after{
+        content: ""; position: absolute; top: 50%; width: 40%; height: 1px; background: var(--md-sys-outline);
+      }
+      .divider::before{ left: 0; }
+      .divider::after{ right: 0; }
+
+      /* Botão estilo Material */
+      .btn{
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        width: 100%; height: 48px; padding: 0 16px;
+        border-radius: 12px; border: none; outline: none; cursor: pointer;
+        background: var(--md-sys-primary); color: var(--md-sys-on-primary);
+        font-weight: 600; letter-spacing: .1px;
+        box-shadow: 0 2px 6px rgba(11,87,208,.35);
+        transition: transform .06s ease, box-shadow .2s ease, filter .2s ease;
+        overflow: hidden;
+      }
+      .btn:active{ transform: translateY(1px); filter: saturate(1.1); }
+      .btn .material-symbols-outlined{ font-size: 20px; }
+
+      /* Ripple */
+      .ripple{ position: absolute; border-radius: 50%; transform: scale(0); animation: ripple .6s linear; background: rgba(255,255,255,.35); pointer-events: none; }
+      @keyframes ripple{ to{ transform: scale(4); opacity: 0; } }
+
+      /* Google button wrapper (GIS) */
+      .google-wrapper{ display: grid; gap: 12px; }
+      .terms{ font-size: .78rem; color: #9aa3af; }
+      .terms a{ color: var(--md-sys-primary); text-decoration: none; }
+
+      /* Footer */
+      footer{ margin-top: 18px; text-align: center; font-size: .82rem; color: #9aa3af; }
+
+      #dashboardProfessor {
+        color: black;
+        border: 1px solid black;
+      }
+
+      .phone{
+        width: 100%;
+        max-width: 400px;
+        height: 700px;
+        border: 16px solid black;
+        border-top-width: 60px;
+        border-bottom-width: 60px;
+        border-radius: 36px;
+        box-shadow: 0 0 0 8px rgba(0,0,0,.1), 0 12px 24px rgba(0,0,0,.2);
+        overflow: hidden;
+        background: white;
+      }
+
+      .wideScreen {
+        width: 100%;
+        max-width: 800px;
+        height: 500px;
+        border: 16px solid black;
+        border-top-width: 60px;
+        border-bottom-width: 60px;
+        border-radius: 36px;
+        box-shadow: 0 0 0 8px rgba(0,0,0,.1), 0 12px 24px rgba(0,0,0,.2);
+        overflow: hidden;
+        background: white;
+      }
