@@ -1,4 +1,4 @@
-import { auth, onAuth, provider, signInWithPopup } from "./firebase.js";
+import { auth, onAuth, provider, signInWithPopup, db, collection, addDoc } from "./firebase.js";
 
 
 // DOM Elements Style Manipulation
@@ -39,22 +39,81 @@ btn.addEventListener('click', (e) => {
       const perfilSelecionado = perfilSelecionadoObj ? perfilSelecionadoObj.value : 'personal'; // valor padrão
       loginSection.style.display = 'none';
       dashboardProfessor.style.display = 'block';
-      dashboardProfessor.innerHTML = `<h2>Bem-vindo, Professor ${user.displayName}</h2>
-      <p>Email: ${user.email}</p>
-      <button id="btnLogout">Sair</button>`;
-      const btnLogout = document.getElementById('btnLogout');
-      btnLogout.addEventListener('click', () => {
-          auth.signOut().then(() => {
-          console.log('Usuário deslogado com sucesso.');
-          dashboardProfessor.style.display = 'none';
-          loginSection.style.display = 'block';
-        }).catch((error) => {
-          console.error('Erro ao deslogar:', error);
-        });
-      });
+      populateDashboard(user, perfilSelecionado);
     })
     .catch((error) => {
       console.error('Erro ao autenticar:', error);
       console.error('Não foi possível concluir o login. Tente novamente.');
     });
 });
+
+
+const populateDashboard = (user, perfil) => {
+
+  dashboardProfessor.innerHTML += `
+      <h2>Bem-vindo, ${user.displayName || 'Usuário'}! <button id="btnLogout">Sair</button></h2>
+      <p>Email: ${user.email}</p>
+  `;
+  
+    const btnLogout = document.getElementById('btnLogout');
+    btnLogout.addEventListener('click', () => {
+        auth.signOut().then(() => {
+        console.log('Usuário deslogado com sucesso.');
+        dashboardProfessor.style.display = 'none';
+        loginSection.style.display = 'block';
+      }).catch((error) => {
+        console.error('Erro ao deslogar:', error);
+      });
+    });
+
+  dashboardProfessor.innerHTML += `
+    <button id='btnAddAluno'>Adicionar Aluno</button>
+    <button id='btnVerAlunos'>Ver Alunos</button>
+  `;
+  const btnAddAluno = document.getElementById('btnAddAluno');
+  const alunosList = document.getElementById('alunosList');
+  
+  btnAddAluno.addEventListener('click', e => addAluno());
+};
+
+const addAluno = () => {
+  const addAlunoSection = document.getElementById('addAlunoSection');
+  addAlunoSection.style.display = 'block';
+
+  const btnSalvarAluno = document.getElementById('btnSalvarAluno');
+  // Remove qualquer listener anterior
+  btnSalvarAluno.replaceWith(btnSalvarAluno.cloneNode(true));
+  const newBtnSalvarAluno = document.getElementById('btnSalvarAluno');
+  newBtnSalvarAluno.addEventListener('click', e => {
+    const alunoNome = document.getElementById('alunoNome').value;
+    const alunoEmail = document.getElementById('alunoEmail').value;
+    const alunoTelefone = document.getElementById('alunoTelefone').value;
+    const alunoObjetivo = document.getElementById('alunoObjetivo').value;
+    const alunoIdade = document.getElementById('alunoIdade').value;
+
+    addAlunoToFirestore(alunoNome, alunoEmail, alunoTelefone, alunoObjetivo, alunoIdade, auth.currentUser.uid);
+
+    document.getElementById('alunoNome').value = '';
+    document.getElementById('alunoEmail').value = '';
+    document.getElementById('alunoTelefone').value = '';
+    document.getElementById('alunoObjetivo').value = '';
+    document.getElementById('alunoIdade').value = '';
+    addAlunoSection.style.display = 'none';
+  });
+}
+
+const addAlunoToFirestore = async (nome, email, telefone, objetivo, idade, idPersonal) => {
+  try {
+    const docRef = await addDoc(collection(db, "alunos"), {
+      nome: nome,
+      email: email,
+      telefone: telefone,
+      objetivo: objetivo,
+      idade: idade,
+      personal: idPersonal
+    });
+    console.log("Aluno adicionado com ID: ", docRef.id);
+  } catch (error) {
+    console.error("Erro ao adicionar aluno:", error);
+  }
+};

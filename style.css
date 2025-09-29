@@ -97,28 +97,17 @@
         border: 1px solid black;
       }
 
-      .phone{
-        width: 100%;
-        max-width: 400px;
-        height: 700px;
-        border: 16px solid black;
-        border-top-width: 60px;
-        border-bottom-width: 60px;
-        border-radius: 36px;
-        box-shadow: 0 0 0 8px rgba(0,0,0,.1), 0 12px 24px rgba(0,0,0,.2);
-        overflow: hidden;
-        background: white;
+      #dadosNovoAluno{
+        color: black;
+
       }
 
-      .wideScreen {
+      #dadosNovoAluno input, #dadosNovoAluno select{
         width: 100%;
-        max-width: 800px;
-        height: 500px;
-        border: 16px solid black;
-        border-top-width: 60px;
-        border-bottom-width: 60px;
-        border-radius: 36px;
-        box-shadow: 0 0 0 8px rgba(0,0,0,.1), 0 12px 24px rgba(0,0,0,.2);
-        overflow: hidden;
-        background: white;
+        height: 40px;
+        border-radius: 8px;
+        border: 1px solid var(--md-sys-outline);
+        padding: 0 12px;
+        font-size: 1rem;
+        margin-bottom: 12px;
       }

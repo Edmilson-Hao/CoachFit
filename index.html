@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login • CoachFit</title>
-
+    <link rel="icon" href="src/img/icon.ico" type="image/x-icon">
     <!-- Roboto + Material Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,13 +53,27 @@
       </section>
 
 
-      <section id="dashboardProfessor" style="display: none;">
-        <h1>Dashboard do Professor</h1>
-        <p>Conteúdo exclusivo para professores.</p>
+      <section id="dashboardProfessor" style="display: none;"></section>
+
+      <section id="addAlunoSection" style="display: none;">
+        <Div id="dadosNovoAluno">
+          <label for="alunoNome">Nome do Aluno:</label>
+          <input type="text" id="alunoNome" />
+          <label for="alunoEmail">Email do Aluno:</label>
+          <input type="email" id="alunoEmail" /> 
+          <label for="alunoTelefone">Telefone do Aluno:</label>
+          <input type="tel" id="alunoTelefone" />
+          <label for="alunoObjetivo">Objetivo do Aluno:</label>
+          <input type="text" id="alunoObjetivo" />
+          <label for="alunoIdade">Idade do Aluno:</label>
+          <input type="number" id="alunoIdade" min="0" />
+          <button id="btnSalvarAluno">Salvar</button> 
+        </Div>
       </section>
     </main>
 
     <script src="main.js" type="module"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="./style.js" type="module"></script>
   </body>
 </html>
