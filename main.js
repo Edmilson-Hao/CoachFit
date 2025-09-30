@@ -51,24 +51,27 @@ btn.addEventListener('click', (e) => {
 
 const populateDashboard = (user, perfil) => {
 
-  dashboardProfessor.innerHTML += `
+  dashboardProfessor.innerHTML = `
       <h2>Bem-vindo, ${user.displayName || 'Usuário'}!</h2>
       <p>Email: ${user.email}</p>
       <button id='btnAddAluno'>Adicionar Aluno</button>
       <button id='btnVerAlunos'>Ver Alunos</button>
-      <button id='criarTreinoBtn'>Criar Treino</button>
-
+      <button id='btnListarExercicios'>Listar Exercícios</button>
+      <button id='btnListarTreinos'>Listar Treino</button>
       <button id="btnLogout">Sair</button>
   `;
-  
+
   const btnLogout = document.getElementById('btnLogout');
   btnLogout.addEventListener('click', e => logOut());
 
   const btnAddAluno = document.getElementById('btnAddAluno');
   const btnVerAlunos = document.getElementById('btnVerAlunos');
-  
+  const btnListarExercicios = document.getElementById('btnListarExercicios');
+  const btnListarTreinos = document.getElementById('btnListarTreinos');
+
   btnAddAluno.addEventListener('click', e => addAluno());
   btnVerAlunos.addEventListener('click', e => listAlunos(auth.currentUser.uid));
+  btnListarExercicios.addEventListener('click', e => listExercicios());
 };
 
 const logOut = () => {
@@ -198,3 +201,135 @@ const updateAlunoFirestore = async (alunoId, novosDados) => {
   const alunoRef = doc(db, "alunos", alunoId);
   await updateDoc(alunoRef, novosDados);
 };
+
+// Função para listar exercícios
+const listExercicios = async () => {
+  let exerciciosListSection = document.getElementById('exerciciosListSection');
+  exerciciosListSection.style.display = 'block';
+  if (!exerciciosListSection) {
+    exerciciosListSection = document.createElement('div');
+    exerciciosListSection.id = 'exerciciosListSection';
+    exerciciosListSection.style.background = "#fff";
+    exerciciosListSection.style.border = "1px solid #ccc";
+    exerciciosListSection.style.borderRadius = "10px";
+    exerciciosListSection.style.padding = "18px";
+    exerciciosListSection.style.margin = "20px 0";
+    exerciciosListSection.style.maxWidth = "500px";
+    exerciciosListSection.style.position = "relative";
+    // Troque de document.body para dashboardProfessor:
+    dashboardProfessor.appendChild(exerciciosListSection);
+  }
+  exerciciosListSection.innerHTML = `
+    <h3>Lista de Exercícios</h3>
+    <input type="text" id="pesquisaExercicio" placeholder="Pesquisar exercício..." style="width:100%;margin-bottom:10px;padding:8px;border-radius:6px;border:1px solid #ccc;">
+    <button id="btnNovoExercicio" style="margin-bottom:12px;">Novo Exercício</button>
+    <div id="listaExercicios"></div>
+    <button id="btnFecharExercicios" style="position:absolute;top:10px;right:10px;">Fechar</button>
+  `;
+
+  document.getElementById('btnFecharExercicios').onclick = () => exerciciosListSection.remove();
+  document.getElementById('btnNovoExercicio').onclick = () => mostrarEditarExercicio();
+  document.getElementById('pesquisaExercicio').oninput = (e) => renderExercicios(e.target.value);
+
+  // Função para renderizar a lista de exercícios
+  async function renderExercicios(filtro = "") {
+    const listaExercicios = document.getElementById('listaExercicios');
+    listaExercicios.innerHTML = "Carregando...";
+    const q = collection(db, "exercicios");
+    const querySnapshot = await getDocs(q);
+    listaExercicios.innerHTML = "";
+    querySnapshot.forEach((docSnap) => {
+      const exercicio = docSnap.data();
+      const exercicioId = docSnap.id;
+      if (
+        filtro &&
+        !exercicio.nome.toLowerCase().includes(filtro.toLowerCase())
+      ) return;
+      const exercicioDiv = document.createElement('div');
+      exercicioDiv.style.border = "1px solid #eee";
+      exercicioDiv.style.borderRadius = "8px";
+      exercicioDiv.style.padding = "10px";
+      exercicioDiv.style.marginBottom = "10px";
+      exercicioDiv.style.background = "#f7f8fa";
+      exercicioDiv.style.cursor = "pointer";
+      exercicioDiv.innerHTML = `
+        <strong>${exercicio.nome}</strong><br>
+        Objetivo: ${exercicio.objetivo}<br>
+        <small>${exercicio.youtube ? 'Possui vídeo' : 'Sem vídeo'}</small>
+      `;
+      exercicioDiv.onclick = () => mostrarEditarExercicio(exercicio, exercicioId);
+      listaExercicios.appendChild(exercicioDiv);
+    });
+    if (!listaExercicios.innerHTML) listaExercicios.innerHTML = "<em>Nenhum exercício encontrado.</em>";
+  }
+
+  renderExercicios();
+};
+
+// Função para criar/editar exercício
+const mostrarEditarExercicio = (exercicio = {}, exercicioId = null) => {
+  // Remove qualquer formulário anterior
+  let oldEditDiv = document.getElementById('editarExercicioDiv');
+  if (oldEditDiv) oldEditDiv.remove();
+
+  const editDiv = document.createElement('div');
+  editDiv.id = 'editarExercicioDiv';
+  editDiv.style.border = "2px solid #0B57D0";
+  editDiv.style.borderRadius = "10px";
+  editDiv.style.padding = "18px";
+  editDiv.style.margin = "20px 0";
+  editDiv.style.background = "#eaf1fb";
+  editDiv.style.maxWidth = "500px";
+
+  editDiv.innerHTML = `
+    <h4>${exercicioId ? 'Editar' : 'Novo'} Exercício</h4>
+    <label>Nome:<br><input id="exNome" value="${exercicio.nome || ''}" /></label><br>
+    <label>Objetivo:<br>
+      <select id="exObjetivo">
+        <option value="Neuromuscular" ${exercicio.objetivo === "Neuromuscular" ? "selected" : ""}>Neuromuscular</option>
+        <option value="Mobilidade" ${exercicio.objetivo === "Mobilidade" ? "selected" : ""}>Mobilidade</option>
+        <option value="Alongamento" ${exercicio.objetivo === "Alongamento" ? "selected" : ""}>Alongamento</option>
+        <option value="Cárdio" ${exercicio.objetivo === "Cárdio" ? "selected" : ""}>Cárdio</option>
+      </select>
+    </label><br>
+    <label>Link do vídeo do YouTube:<br><input id="exYoutube" value="${exercicio.youtube || ''}" /></label><br>
+    ${exercicio.youtube ? `<div style="margin:10px 0;"><iframe width="100%" height="720" src="https://www.youtube.com/embed/${extrairIdYoutube(exercicio.youtube)}" frameborder="0" allowfullscreen></iframe></div>` : ""}
+    <button id="btnSalvarExercicio">${exercicioId ? 'Salvar' : 'Criar'}</button>
+    <button id="btnCancelarExercicio">Cancelar</button>
+  `;
+
+  document.body.appendChild(editDiv);
+
+  document.getElementById('btnCancelarExercicio').onclick = () => editDiv.remove();
+
+  document.getElementById('btnSalvarExercicio').onclick = async () => {
+    const nome = document.getElementById('exNome').value.trim();
+    const objetivo = document.getElementById('exObjetivo').value;
+    const youtube = document.getElementById('exYoutube').value.trim();
+    if (!nome) return alert('Preencha o nome do exercício.');
+    const dados = { nome, objetivo, youtube };
+    try {
+      if (exercicioId) {
+        // Atualizar
+        await updateDoc(doc(db, "exercicios", exercicioId), dados);
+        alert('Exercício atualizado!');
+      } else {
+        // Criar novo
+        await addDoc(collection(db, "exercicios"), dados);
+        alert('Exercício criado!');
+      }
+      editDiv.remove();
+      listExercicios();
+    } catch (e) {
+      alert('Erro ao salvar exercício.');
+    }
+  };
+};
+
+// Função utilitária para extrair o ID do vídeo do YouTube
+function extrairIdYoutube(url) {
+  if (!url) return "";
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : "";
+}
