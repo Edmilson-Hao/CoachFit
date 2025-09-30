@@ -52,31 +52,34 @@ btn.addEventListener('click', (e) => {
 const populateDashboard = (user, perfil) => {
 
   dashboardProfessor.innerHTML += `
-      <h2>Bem-vindo, ${user.displayName || 'Usuário'}! <button id="btnLogout">Sair</button></h2>
+      <h2>Bem-vindo, ${user.displayName || 'Usuário'}!</h2>
       <p>Email: ${user.email}</p>
+      <button id='btnAddAluno'>Adicionar Aluno</button>
+      <button id='btnVerAlunos'>Ver Alunos</button>
+      <button id='criarTreinoBtn'>Criar Treino</button>
+
+      <button id="btnLogout">Sair</button>
   `;
   
-    const btnLogout = document.getElementById('btnLogout');
-    btnLogout.addEventListener('click', () => {
-        auth.signOut().then(() => {
-        console.log('Usuário deslogado com sucesso.');
-        dashboardProfessor.style.display = 'none';
-        loginSection.style.display = 'block';
-      }).catch((error) => {
-        console.error('Erro ao deslogar:', error);
-      });
-    });
+  const btnLogout = document.getElementById('btnLogout');
+  btnLogout.addEventListener('click', e => logOut());
 
-  dashboardProfessor.innerHTML += `
-    <button id='btnAddAluno'>Adicionar Aluno</button>
-    <button id='btnVerAlunos'>Ver Alunos</button>
-  `;
   const btnAddAluno = document.getElementById('btnAddAluno');
   const btnVerAlunos = document.getElementById('btnVerAlunos');
   
   btnAddAluno.addEventListener('click', e => addAluno());
   btnVerAlunos.addEventListener('click', e => listAlunos(auth.currentUser.uid));
 };
+
+const logOut = () => {
+  auth.signOut().then(() => {
+    console.log('Usuário deslogado com sucesso.');
+    dashboardProfessor.style.display = 'none';
+    loginSection.style.display = 'block';
+  }).catch((error) => {
+    console.error('Erro ao deslogar:', error);
+  });
+}
 
 const addAluno = () => {
   const addAlunoSection = document.getElementById('addAlunoSection');
