@@ -97,9 +97,8 @@
         border: 1px solid black;
       }
 
-      #dadosNovoAluno{
+      #dadosNovoAluno, #alunosListSection{
         color: black;
-
       }
 
       #dadosNovoAluno input, #dadosNovoAluno select{

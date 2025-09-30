@@ -1,4 +1,4 @@
-import { auth, onAuth, provider, signInWithPopup, db, collection, addDoc } from "./firebase.js";
+import { auth, onAuth, provider, signInWithPopup, db, collection, addDoc, query, where, getDocs } from "./firebase.js";
 
 
 // DOM Elements Style Manipulation
@@ -34,6 +34,7 @@ btn.addEventListener('click', (e) => {
       // Usuário autenticado com sucesso
       const user = result.user;
       console.log('Usuário autenticado:', user);
+
       // Redirecionar para o dashboard ou outra página
       const perfilSelecionadoObj = Array.from(radios).find(r => r.checked);
       const perfilSelecionado = perfilSelecionadoObj ? perfilSelecionadoObj.value : 'personal'; // valor padrão
@@ -71,9 +72,10 @@ const populateDashboard = (user, perfil) => {
     <button id='btnVerAlunos'>Ver Alunos</button>
   `;
   const btnAddAluno = document.getElementById('btnAddAluno');
-  const alunosList = document.getElementById('alunosList');
+  const btnVerAlunos = document.getElementById('btnVerAlunos');
   
   btnAddAluno.addEventListener('click', e => addAluno());
+  btnVerAlunos.addEventListener('click', e => listAlunos(auth.currentUser.uid));
 };
 
 const addAluno = () => {
@@ -101,6 +103,36 @@ const addAluno = () => {
     addAlunoSection.style.display = 'none';
   });
 }
+
+const listAlunos = async (idPersonal) => {
+  const alunosListSection = document.getElementById('alunosListSection');
+  alunosListSection.style.display = 'block';
+  // Limpa lista anterior
+  alunosListSection.innerHTML = '<h3>Lista de Alunos</h3><div id="listaAlunos" style="width: 100%;"></div>';
+  const listaAlunos = document.getElementById('listaAlunos');
+
+  const q = query(collection(db, "alunos"), where("personal", "==", idPersonal));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    const aluno = doc.data();
+    // Cria um bloco para cada aluno
+    const alunoDiv = document.createElement('div');
+    alunoDiv.style.border = "1px solid #ccc";
+    alunoDiv.style.borderRadius = "8px";
+    alunoDiv.style.padding = "12px";
+    alunoDiv.style.marginBottom = "16px";
+    alunoDiv.style.background = "#f9f9f9";
+
+    alunoDiv.innerHTML = `
+      <strong>Nome:</strong> ${aluno.nome}<br>
+      <strong>Email:</strong> ${aluno.email}<br>
+      <strong>Telefone:</strong> ${aluno.telefone}<br>
+      <strong>Objetivo:</strong> ${aluno.objetivo}<br>
+      <strong>Idade:</strong> ${aluno.idade}
+    `;
+    listaAlunos.appendChild(alunoDiv);
+  });
+};
 
 const addAlunoToFirestore = async (nome, email, telefone, objetivo, idade, idPersonal) => {
   try {

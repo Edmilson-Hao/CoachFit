@@ -1,11 +1,12 @@
 const larguraContainers = () => {
     if(window.innerWidth > window.innerHeight){
-        document.body.style.width = '33%';
-        document.body.style.marginLeft = '33%';
+        document.body.classList.add('wide-layout');
+        document.body.classList.remove('full-layout');
     } else{
-        document.body.style.width = '100%';
-        document.body.style.margin = '0';
+        document.body.classList.remove('wide-layout');
+        document.body.classList.add('full-layout');
     }
 }
 
 larguraContainers();
+window.addEventListener('resize', larguraContainers);
