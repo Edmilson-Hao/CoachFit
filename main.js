@@ -1,4 +1,4 @@
-import { auth, onAuth, provider, signInWithPopup, db, collection, addDoc, query, where, getDocs } from "./firebase.js";
+import { auth, onAuth, provider, signInWithPopup, db, collection, addDoc, query, where, getDocs, doc, updateDoc } from "./firebase.js";
 
 
 // DOM Elements Style Manipulation
@@ -107,21 +107,21 @@ const addAluno = () => {
 const listAlunos = async (idPersonal) => {
   const alunosListSection = document.getElementById('alunosListSection');
   alunosListSection.style.display = 'block';
-  // Limpa lista anterior
   alunosListSection.innerHTML = '<h3>Lista de Alunos</h3><div id="listaAlunos" style="width: 100%;"></div>';
   const listaAlunos = document.getElementById('listaAlunos');
 
   const q = query(collection(db, "alunos"), where("personal", "==", idPersonal));
   const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    const aluno = doc.data();
-    // Cria um bloco para cada aluno
+  querySnapshot.forEach((docSnap) => {
+    const aluno = docSnap.data();
+    const alunoId = docSnap.id;
     const alunoDiv = document.createElement('div');
     alunoDiv.style.border = "1px solid #ccc";
     alunoDiv.style.borderRadius = "8px";
     alunoDiv.style.padding = "12px";
     alunoDiv.style.marginBottom = "16px";
     alunoDiv.style.background = "#f9f9f9";
+    alunoDiv.style.cursor = "pointer";
 
     alunoDiv.innerHTML = `
       <strong>Nome:</strong> ${aluno.nome}<br>
@@ -130,22 +130,68 @@ const listAlunos = async (idPersonal) => {
       <strong>Objetivo:</strong> ${aluno.objetivo}<br>
       <strong>Idade:</strong> ${aluno.idade}
     `;
+
+    alunoDiv.addEventListener('click', () => {
+      mostrarEditarAluno(aluno, alunoId);
+    });
+
     listaAlunos.appendChild(alunoDiv);
   });
 };
 
-const addAlunoToFirestore = async (nome, email, telefone, objetivo, idade, idPersonal) => {
-  try {
-    const docRef = await addDoc(collection(db, "alunos"), {
-      nome: nome,
-      email: email,
-      telefone: telefone,
-      objetivo: objetivo,
-      idade: idade,
-      personal: idPersonal
-    });
-    console.log("Aluno adicionado com ID: ", docRef.id);
-  } catch (error) {
-    console.error("Erro ao adicionar aluno:", error);
-  }
+// Função para mostrar o formulário de edição
+const mostrarEditarAluno = (aluno, alunoId) => {
+  // Remove qualquer formulário de edição anterior
+  const oldEditDiv = document.getElementById('editarAlunoDiv');
+  if (oldEditDiv) oldEditDiv.remove();
+
+  // Cria o div de edição
+  const editDiv = document.createElement('div');
+  editDiv.id = 'editarAlunoDiv';
+  editDiv.style.border = "2px solid #0B57D0";
+  editDiv.style.borderRadius = "10px";
+  editDiv.style.padding = "18px";
+  editDiv.style.margin = "20px 0";
+  editDiv.style.background = "#eaf1fb";
+  editDiv.innerHTML = `
+    <h4>Editar Aluno</h4>
+    <label>Nome:<br><input id="editNome" value="${aluno.nome}" /></label><br>
+    <label>Email:<br><input id="editEmail" value="${aluno.email}" /></label><br>
+    <label>Telefone:<br><input id="editTelefone" value="${aluno.telefone}" /></label><br>
+    <label>Objetivo:<br><input id="editObjetivo" value="${aluno.objetivo}" /></label><br>
+    <label>Idade:<br><input id="editIdade" value="${aluno.idade}" /></label><br>
+    <button id="btnSalvarEdicao">Salvar</button>
+    <button id="btnCancelarEdicao">Cancelar</button>
+  `;
+
+  // Adiciona o div ao alunosListSection
+  document.getElementById('alunosListSection').appendChild(editDiv);
+
+  document.getElementById('btnCancelarEdicao').onclick = () => editDiv.remove();
+
+  document.getElementById('btnSalvarEdicao').onclick = async () => {
+    const novosDados = {
+      nome: document.getElementById('editNome').value,
+      email: document.getElementById('editEmail').value,
+      telefone: document.getElementById('editTelefone').value,
+      objetivo: document.getElementById('editObjetivo').value,
+      idade: document.getElementById('editIdade').value
+    };
+    try {
+      // Atualiza no Firestore
+      await updateAlunoFirestore(alunoId, novosDados);
+      alert('Aluno atualizado com sucesso!');
+      editDiv.remove();
+      // Atualiza a lista
+      listAlunos(aluno.personal);
+    } catch (e) {
+      alert('Erro ao atualizar aluno.');
+    }
+  };
+};
+
+// Função para atualizar no Firestore
+const updateAlunoFirestore = async (alunoId, novosDados) => {
+  const alunoRef = doc(db, "alunos", alunoId);
+  await updateDoc(alunoRef, novosDados);
 };
