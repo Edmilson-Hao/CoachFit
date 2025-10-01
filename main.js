@@ -72,6 +72,7 @@ const populateDashboard = (user, perfil) => {
   btnAddAluno.addEventListener('click', e => addAluno());
   btnVerAlunos.addEventListener('click', e => listAlunos(auth.currentUser.uid));
   btnListarExercicios.addEventListener('click', e => listExercicios());
+  btnListarTreinos.addEventListener('click', e => listTreinos());
 };
 
 const logOut = () => {
@@ -332,4 +333,281 @@ function extrairIdYoutube(url) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
   return (match && match[2].length === 11) ? match[2] : "";
+}
+
+// Função para listar treinos
+const listTreinos = async () => {
+  const treinosSection = document.getElementById('treinosListSection');
+  treinosSection.style.display = 'block';
+  treinosSection.innerHTML = `
+    <h3>Treinos Cadastrados</h3>
+    <button id="btnNovoTreino">Novo Treino</button>
+    <div id="listaTreinos"></div>
+  `;
+
+  // Listar treinos do Firestore
+  const listaTreinosDiv = document.getElementById('listaTreinos');
+  listaTreinosDiv.innerHTML = "Carregando...";
+  const q = collection(db, "treinos");
+  const querySnapshot = await getDocs(q);
+  listaTreinosDiv.innerHTML = "";
+  querySnapshot.forEach((docSnap) => {
+    const treino = docSnap.data();
+    const treinoId = docSnap.id;
+    const treinoDiv = document.createElement('div');
+    treinoDiv.style.border = "1px solid #ccc";
+    treinoDiv.style.borderRadius = "8px";
+    treinoDiv.style.padding = "12px";
+    treinoDiv.style.marginBottom = "16px";
+    treinoDiv.style.background = "#f9f9f9";
+    treinoDiv.style.cursor = "pointer";
+    treinoDiv.innerHTML = `
+      <strong>${treino.nome || 'Sem nome'}</strong><br>
+      <strong>Dias:</strong> ${treino.dias?.length || 0} <br>
+      <strong>Cárdio:</strong> ${treino.cardio || ''} <br>
+      <button class="btnEditarTreino" data-id="${treinoId}">Editar</button>
+    `;
+    listaTreinosDiv.appendChild(treinoDiv);
+  });
+
+  // Botão novo treino
+  document.getElementById('btnNovoTreino').onclick = () => mostrarEditarTreino();
+
+  // Botões editar
+  document.querySelectorAll('.btnEditarTreino').forEach(btn => {
+    btn.onclick = async (e) => {
+      const id = e.target.getAttribute('data-id');
+      // Busca treino pelo id
+      const treinoDoc = querySnapshot.docs.find(d => d.id === id);
+      if (treinoDoc) mostrarEditarTreino(treinoDoc.data(), id);
+    };
+  });
+};
+
+// Função para criar/editar treino
+const mostrarEditarTreino = async (treino = { nome: "", dias: [], cardio: "" }, treinoId = null) => {
+  const treinosSection = document.getElementById('treinosListSection');
+  treinosSection.innerHTML = `
+    <h4>${treinoId ? 'Editar' : 'Novo'} Treino</h4>
+    <label>Nome do Treino:<br>
+      <input id="treinoNome" value="${treino.nome || ''}" placeholder="Nome do treino"/>
+    </label>
+    <br>
+    <label>Sessões de Cárdio:<br>
+      <input id="sessaoCardio" value="${treino.cardio || ''}" placeholder="Ex: 20min corrida, 10min bike"/>
+    </label>
+    <div id="diasTreino"></div>
+    <button id="btnAddDia" type="button">Adicionar Dia</button>
+    <br><br>
+    <button id="btnSalvarTreino">${treinoId ? 'Salvar' : 'Criar'}</button>
+    <button id="btnCancelarTreino">Cancelar</button>
+  `;
+
+  // Renderiza os dias de treino
+  function renderDias() {
+    const diasDiv = document.getElementById('diasTreino');
+    diasDiv.innerHTML = "";
+    treino.dias.forEach((dia, idx) => {
+      const diaDiv = document.createElement('div');
+      diaDiv.style.border = "1px solid #bbb";
+      diaDiv.style.borderRadius = "8px";
+      diaDiv.style.padding = "10px";
+      diaDiv.style.marginBottom = "10px";
+      diaDiv.style.background = "#f7f8fa";
+      diaDiv.innerHTML = `
+        <label>Nome do Dia: <input value="${dia.nome || ''}" id="diaNome${idx}" /></label>
+        <button type="button" id="btnAddExercicio${idx}">Adicionar Exercício</button>
+        <button type="button" id="btnRemoverDia${idx}">Remover Dia</button>
+        <div id="exerciciosDia${idx}"></div>
+      `;
+      diasDiv.appendChild(diaDiv);
+
+      renderExerciciosDia(idx);
+
+      document.getElementById(`btnAddExercicio${idx}`).onclick = () => adicionarExercicioAoDia(idx);
+      document.getElementById(`btnRemoverDia${idx}`).onclick = () => {
+        treino.dias.splice(idx, 1);
+        renderDias();
+      };
+      document.getElementById(`diaNome${idx}`).oninput = (e) => {
+        treino.dias[idx].nome = e.target.value;
+      };
+    });
+  }
+
+  // Renderiza exercícios de um dia
+  function renderExerciciosDia(idx) {
+    const exDiv = document.getElementById(`exerciciosDia${idx}`);
+    exDiv.innerHTML = "";
+    treino.dias[idx].exercicios = treino.dias[idx].exercicios || [];
+    treino.dias[idx].exercicios.forEach((ex, exIdx) => {
+      const exBloco = document.createElement('div');
+      exBloco.style.border = "1px solid #eee";
+      exBloco.style.borderRadius = "6px";
+      exBloco.style.padding = "8px";
+      exBloco.style.margin = "8px 0";
+      exBloco.style.background = "#fff";
+      exBloco.innerHTML = `
+        <strong>${ex.nome || ''}</strong>
+        <button type="button" id="btnRemoverEx${idx}_${exIdx}">Remover</button>
+        <br>
+        Séries: <input type="number" min="1" value="${ex.series?.length || 1}" id="numSeries${idx}_${exIdx}" style="width:40px;">
+        <div id="seriesDiv${idx}_${exIdx}"></div>
+        Descanso (seg): <input type="number" min="0" value="${ex.descanso || 0}" id="descanso${idx}_${exIdx}" style="width:60px;">
+        <br>
+        Observações: <input value="${ex.obs || ''}" id="obs${idx}_${exIdx}" style="width:200px;">
+        <br>
+        ${ex.video ? `<iframe width="220" height="124" src="https://www.youtube.com/embed/${extrairIdYoutube(ex.video)}" frameborder="0" allowfullscreen></iframe>` : ""}
+      `;
+      exDiv.appendChild(exBloco);
+
+      renderSeries(idx, exIdx);
+
+      document.getElementById(`btnRemoverEx${idx}_${exIdx}`).onclick = () => {
+        treino.dias[idx].exercicios.splice(exIdx, 1);
+        renderExerciciosDia(idx);
+      };
+      document.getElementById(`numSeries${idx}_${exIdx}`).onchange = (e) => {
+        const n = parseInt(e.target.value) || 1;
+        ex.series = ex.series || [];
+        while (ex.series.length < n) ex.series.push({ reps: '', peso: '' });
+        while (ex.series.length > n) ex.series.pop();
+        renderSeries(idx, exIdx);
+      };
+      document.getElementById(`descanso${idx}_${exIdx}`).oninput = (e) => ex.descanso = e.target.value;
+      document.getElementById(`obs${idx}_${exIdx}`).oninput = (e) => ex.obs = e.target.value;
+    });
+  }
+
+  // Renderiza séries de um exercício
+  function renderSeries(idx, exIdx) {
+    const ex = treino.dias[idx].exercicios[exIdx];
+    const sDiv = document.getElementById(`seriesDiv${idx}_${exIdx}`);
+    sDiv.innerHTML = "";
+    ex.series = ex.series || [{ reps: '', peso: '' }];
+    ex.series.forEach((serie, sIdx) => {
+      const sLinha = document.createElement('div');
+      sLinha.innerHTML = `
+        Série ${sIdx + 1}: 
+        Repetições: <input type="number" min="1" value="${serie.reps || ''}" id="reps${idx}_${exIdx}_${sIdx}" style="width:50px;">
+        Peso: <input type="number" min="0" value="${serie.peso || ''}" id="peso${idx}_${exIdx}_${sIdx}" style="width:60px;">
+      `;
+      sDiv.appendChild(sLinha);
+
+      document.getElementById(`reps${idx}_${exIdx}_${sIdx}`).oninput = (e) => ex.series[sIdx].reps = e.target.value;
+      document.getElementById(`peso${idx}_${exIdx}_${sIdx}`).oninput = (e) => ex.series[sIdx].peso = e.target.value;
+    });
+  }
+
+  // Adiciona um novo dia
+  document.getElementById('btnAddDia').onclick = () => {
+    treino.dias.push({ nome: '', exercicios: [] });
+    renderDias();
+  };
+
+  // Adiciona exercício ao dia (com pesquisa)
+  async function adicionarExercicioAoDia(idx) {
+    // Busca exercícios cadastrados
+    const q = collection(db, "exercicios");
+    const querySnapshot = await getDocs(q);
+    const lista = [];
+    querySnapshot.forEach((docSnap) => {
+      const ex = docSnap.data();
+      lista.push({ id: docSnap.id, ...ex });
+    });
+
+    // Cria popup de seleção
+    let popup = document.getElementById('popupExercicios');
+    if (popup) popup.remove();
+    popup = document.createElement('div');
+    popup.id = 'popupExercicios';
+    popup.style.position = 'fixed';
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%,-50%)';
+    popup.style.background = '#fff';
+    popup.style.border = '2px solid #0B57D0';
+    popup.style.borderRadius = '10px';
+    popup.style.padding = '20px';
+    popup.style.zIndex = 9999;
+    popup.style.maxWidth = '400px';
+    popup.innerHTML = `
+      <h4>Escolha um exercício</h4>
+      <input type="text" id="pesquisaExSel" placeholder="Pesquisar..." style="width:100%;margin-bottom:10px;">
+      <div id="listaExSel"></div>
+      <button id="btnFecharPopupEx">Fechar</button>
+    `;
+    document.body.appendChild(popup);
+
+    function renderListaExSel(filtro = "") {
+      const listaDiv = document.getElementById('listaExSel');
+      listaDiv.innerHTML = "";
+      lista.filter(ex => !filtro || ex.nome.toLowerCase().includes(filtro.toLowerCase()))
+        .forEach((ex, exIdx) => {
+          const exDiv = document.createElement('div');
+          exDiv.style.border = "1px solid #eee";
+          exDiv.style.borderRadius = "6px";
+          exDiv.style.padding = "6px";
+          exDiv.style.marginBottom = "6px";
+          exDiv.style.background = "#f7f8fa";
+          exDiv.style.cursor = "pointer";
+          exDiv.innerHTML = `
+            <strong>${ex.nome}</strong> (${ex.objetivo})<br>
+            ${ex.youtube ? `<iframe width="180" height="100" src="https://www.youtube.com/embed/${extrairIdYoutube(ex.youtube)}" frameborder="0" allowfullscreen></iframe>` : ""}
+          `;
+          exDiv.onclick = () => {
+            treino.dias[idx].exercicios.push({
+              nome: ex.nome,
+              video: ex.youtube,
+              objetivo: ex.objetivo,
+              series: [{ reps: '', peso: '' }],
+              descanso: 0,
+              obs: ''
+            });
+            renderExerciciosDia(idx);
+            popup.remove();
+          };
+          listaDiv.appendChild(exDiv);
+        });
+      if (!listaDiv.innerHTML) listaDiv.innerHTML = "<em>Nenhum exercício encontrado.</em>";
+    }
+
+    renderListaExSel();
+    document.getElementById('pesquisaExSel').oninput = (e) => renderListaExSel(e.target.value);
+    document.getElementById('btnFecharPopupEx').onclick = () => popup.remove();
+  }
+
+  // Salvar treino no Firestore
+  document.getElementById('btnSalvarTreino').onclick = async () => {
+    treino.nome = document.getElementById('treinoNome').value;
+    treino.cardio = document.getElementById('sessaoCardio').value;
+    // Limpeza dos dados
+    treino.dias = (treino.dias || []).filter(dia => dia.nome && (dia.exercicios && dia.exercicios.length));
+    treino.dias.forEach(dia => {
+      dia.exercicios = (dia.exercicios || []).filter(ex => ex.nome);
+      dia.exercicios.forEach(ex => {
+        ex.series = (ex.series || []).filter(serie => serie.reps && serie.peso);
+      });
+    });
+    try {
+      if (treinoId) {
+        await updateDoc(doc(db, "treinos", treinoId), treino);
+      } else {
+        await addDoc(collection(db, "treinos"), treino);
+      }
+      listTreinos();
+    } catch (e) {
+      console.error("Erro ao salvar treino:", e);
+    }
+  };
+
+  document.getElementById('btnCancelarTreino').onclick = () => listTreinos();
+
+  renderDias();
+};
+
+// Adicione o evento ao botão "Listar Treinos"
+const btnListarTreinos = document.getElementById('btnListarTreinos');
+if (btnListarTreinos) {
+  btnListarTreinos.addEventListener('click', listTreinos);
 }
