@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Treinos - Edmilson Coach</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="appWindow">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar" style="display: none;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Edmilson Coach</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="window.location.reload()">Treinos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sobre</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="container mt-4 teste" id="loginSection">
+            <h1>Procurar Treino</h1>
+            <input id="searchInput" class="form-control" type="text" placeholder="Nome" value="edmilsongonçalves"></input>
+            <input id="searchKey" class="form-control mt-2" type="text" placeholder="Token de acesso" value="21101994"></input>
+            <input id="searchButton" class="btn btn-primary mt-2" type="submit"></input>
+        </section>
+
+        <section class="container mt-4 teste" id="resultSection" style="display: none;">
+            <h2>Resultados da Busca</h2>
+            <div id="resultsContainer" class="list-group">
+                <!-- Resultados serão inseridos aqui -->
+            </div>
+        </section>
+    </div>
+
+    <script src="./style.js"></script>
+    <script src="./main.js" type="module"></script>
+</body>
+</html>
