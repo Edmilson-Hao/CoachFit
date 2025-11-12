@@ -15,7 +15,7 @@ searchButton.addEventListener('click', () => {
     console.log('Search String:', searchString);
 
     //fetch(`./src/${searchString}.json`)
-    fetch(`./src/${searchString}.json`)
+    fetch(`./public/${searchString}.json`)
     .then(resposta => {
         if (!resposta.ok) {
         throw new Error('Não foi possível localizar o treino.');
@@ -60,4 +60,5 @@ const popularTreino = (json) => {
     });
 
 }
+
 
