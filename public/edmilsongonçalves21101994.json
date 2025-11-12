@@ -1,0 +1,198 @@
+{
+  "nome": "Edmilson Gonçalves",
+  "nascimento": "21/10/1994",
+  "treinos": [
+    {
+      "validade": "30/09/2024 - 30/10/2024",
+      "dias": [
+        {
+          "nome": "Dia 1 - Push",
+          "exercicios": [
+            {
+              "nome": "Supino Inclinado Barra",
+              "series": "4 x 8"
+            },
+            {
+              "nome": "Supino Reto Halteres",
+              "series": "3 x 10"
+            },
+            {
+              "nome": "Crucifixo Máquina",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Elevação Lateral Halteres",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Tríceps Francês Halteres",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Tríceps Corda",
+              "series": "4 x 12"
+            }
+          ]
+        },
+        {
+          "nome": "Dia 2 - Pull",
+          "exercicios": [
+            {
+              "nome": "Puxada Pronada",
+              "series": "4 x 8"
+            },
+            {
+              "nome": "Remada Baixa Supinada",
+              "series": "4 x 10"
+            },
+            {
+              "nome": "Serrote",
+              "series": "3 x 10"
+            },
+            {
+              "nome": "Crucifixo Inverso Máquina",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Rosca Scott Barra",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Rosca Martelo Alternada",
+              "series": "4 x 12"
+            }
+          ]
+        },
+        {
+          "nome": "Dia 3 - Legs",
+          "exercicios": [
+            {
+              "nome": "Agachamento Barra",
+              "series": "4 x 8"
+            },
+            {
+              "nome": "Leg Press 45°",
+              "series": "4 x 10"
+            },
+            {
+              "nome": "Panturrilha No Leg 45°",
+              "series": "4 x 15"
+            },
+            {
+              "nome": "Cadeira Extensora",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Mesa Flexora",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Cadeira Flexora",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Cadeira Abdutora",
+              "series": "3 x 12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "validade": "30/10/2024 - 30/11/2024",
+      "dias": [
+        {
+          "nome": "Dia 1 - Push",
+          "exercicios": [
+            {
+              "nome": "Supino Inclinado Barra",
+              "series": "4 x 8"
+            },
+            {
+              "nome": "Supino Reto Halteres",
+              "series": "3 x 10"
+            },
+            {
+              "nome": "Crucifixo Máquina",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Elevação Lateral Halteres",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Tríceps Francês Halteres",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Tríceps Corda",
+              "series": "4 x 12"
+            }
+          ]
+        },
+        {
+          "nome": "Dia 2 - Pull",
+          "exercicios": [
+            {
+              "nome": "Puxada Pronada",
+              "series": "4 x 8"
+            },
+            {
+              "nome": "Remada Baixa Supinada",
+              "series": "4 x 10"
+            },
+            {
+              "nome": "Serrote",
+              "series": "3 x 10"
+            },
+            {
+              "nome": "Crucifixo Inverso Máquina",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Rosca Scott Barra",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Rosca Martelo Alternada",
+              "series": "4 x 12"
+            }
+          ]
+        },
+        {
+          "nome": "Dia 3 - Legs",
+          "exercicios": [
+            {
+              "nome": "Agachamento Barra",
+              "series": "4 x 8"
+            },
+            {
+              "nome": "Leg Press 45°",
+              "series": "4 x 10"
+            },
+            {
+              "nome": "Panturrilha No Leg 45°",
+              "series": "4 x 15"
+            },
+            {
+              "nome": "Cadeira Extensora",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Mesa Flexora",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Cadeira Flexora",
+              "series": "4 x 12"
+            },
+            {
+              "nome": "Cadeira Abdutora",
+              "series": "3 x 12"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
