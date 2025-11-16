@@ -10,37 +10,37 @@
             "nome": "Supino Inclinado Barra",
             "series": "4 x 8",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": "asdasdasdasd"
           },
           {
             "nome": "Supino Reto Halteres",
             "series": "3 x 10",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Crucifixo Máquina",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Elevação Lateral Halteres",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Tríceps Francês Halteres",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Tríceps Corda",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           }
         ]
       },
@@ -51,37 +51,37 @@
             "nome": "Puxada Pronada",
             "series": "4 x 8",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Remada Baixa Supinada",
             "series": "4 x 10",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Serrote",
             "series": "3 x 10",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Crucifixo Inverso Máquina",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Rosca Scott Barra",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Rosca Martelo Alternada",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           }
         ]
       },
@@ -92,43 +92,43 @@
             "nome": "Agachamento Barra",
             "series": "4 x 8",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Leg Press 45°",
             "series": "4 x 10",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Panturrilha No Leg 45°",
             "series": "4 x 15",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Cadeira Extensora",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Mesa Flexora",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Cadeira Flexora",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           },
           {
             "nome": "Cadeira Abdutora",
             "series": "3 x 12",
             "descanso": "60s",
-            "observacaoSerie": " "
+            "observacaoSerie": ""
           }
         ]
       }

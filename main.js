@@ -6,6 +6,9 @@ const resultsContainer = document.getElementById('resultsContainer'); // ADICION
 const loginSection = document.getElementById('loginSection');         // ADICIONADO
 const navbar = document.getElementById('navbar');
 const titulo = document.getElementById('titulo');
+const sobreSection = document.getElementById('sobreSection');
+const sobreLink = document.getElementById('sobreLink');
+const backButton = document.getElementById('backButton');
 let treino = null;
 
 const sanitize = s => String(s || '').toLowerCase().replace(/\s+/g, '').replace(/\//g, '');
@@ -58,12 +61,32 @@ const popularTreino = (treino) => {
         dia.exercicios.forEach(exercicio => {
             const exercicioDiv = document.createElement('div');
             exercicioDiv.classList.add('exercicio');
+            const obsLine = (exercicio.observacaoSerie && String(exercicio.observacaoSerie).trim() !== '') 
+                ?  ''
+                : `‎ ‎ ‎ ‎ ‎ ‎  Observações: ${exercicio.observacaoSerie}`;
             exercicioDiv.innerHTML = `<h5>${exercicio.nome}</h5>
                 <p>  ‎ ‎ ‎ ‎ ‎ ‎  Séries: ${exercicio.series}
-                <br> ‎ ‎ ‎ ‎ ‎ ‎  Descanso: ${exercicio.descanso}</p>`;
+                <br> ‎ ‎ ‎ ‎ ‎ ‎  Descanso: ${exercicio.descanso}
+                <br> ${obsLine}</p>`;
             resultsContainer.appendChild(exercicioDiv);
         });
     });
     
     
 }
+
+sobreLink.addEventListener('click', (event) => {
+    event && event.preventDefault();
+    navbar.style.display = 'block';
+    loginSection.style.display = 'none';
+    resultSection.style.display = 'none';
+    sobreSection.style.display = 'block';
+});
+
+backButton.addEventListener('click', (event) => {
+    event && event.preventDefault();
+    navbar.style.display = 'block';
+    loginSection.style.display = 'none';
+    resultSection.style.display = 'block';
+    sobreSection.style.display = 'none';
+});

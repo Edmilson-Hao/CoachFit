@@ -8,6 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="appWindow">
@@ -23,7 +25,7 @@
                             <a class="nav-link" href="#" onclick="window.location.reload()">Treinos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre</a>
+                            <a class="nav-link" href="#" id="sobreLink">Sobre</a>
                         </li>
                     </ul>
                 </div>
@@ -42,10 +44,28 @@
                 <!-- Resultados serão inseridos aqui -->
             </div>
         </section>
-    </div>
+
+        <section class="container mt-4 teste" id="sobreSection" style="display: none;">
+            <button id="backButton" class="btn btn-secondary mb-2">Voltar</button>
+            <div id="sobreContainer">
+                <!-- Detalhes do treino serão inseridos aqui -->
+                 <h2>Aviso Importante</h2>
+                <p>
+                    O treino disponibilizado aqui é uma <strong>cortesia do treinador Edmilson Gonçalves e do CT R.W.</strong>.
+                    Ele serve como uma <strong>opção genérica</strong> e <strong>não substitui um programa personalizado</strong>
+                    elaborado a partir de uma <strong>avaliação física completa</strong>.
+                </p>
+                <p>
+                    Um treino baseado em avaliação considera <strong>seus objetivos, condicionamento atual, limitações e necessidades específicas</strong>,
+                    garantindo <strong>segurança e melhores resultados</strong>.
+                </p>
+
+                <!-- Call to Action (opcional) -->
+                <a href="http://wa.me/5581996487199" target="_blank" class="cta">📅 Agendar Avaliação Física</a>
+            </div>
+        </section>
 
     <script src="./style.js"></script>
     <script src="./main.js" type="module"></script>
-    <link rel="stylesheet" href="style.css">
 </body>
 </html>

@@ -1,0 +1,201 @@
+{
+  "aluno": "Felipe Gonçalves",
+  "treino": {
+    "validadeTreino": "16/11/2025 - 16/12/2025",
+    "diasTreino": [
+      {
+        "nome": "Dia 1 - Push",
+        "exercicios": [
+          {
+            "nome": "Supino Reto Barra",
+            "series": "4 x 8",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Crucifixo Inclinado Halteres",
+            "series": "4 x 15",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Dips Paralelas",
+            "series": "4 x Falha",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Elevação Lateral Halteres",
+            "series": "2 x 50 e 2 x 10",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Tríceps Testa Banco Inclinado",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Tríceps Corda",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          }
+        ]
+      },
+      {
+        "nome": "Dia 2 - Pull",
+        "exercicios": [
+          {
+            "nome": "Puxada Frontal Pronada",
+            "series": "4 x 8",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Remada Baixa Supinada",
+            "series": "4 x 10",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Serrote Unilateral",
+            "series": "3 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Crucifixo Inverso Máquina",
+            "series": "4 x 15",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Rosca Scott Barra W",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Rosca Martelo Halteres",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          }
+        ]
+      },
+      {
+        "nome": "Dia 3 - Legs",
+        "exercicios": [
+          {
+            "nome": "Agachamento Livre Barra",
+            "series": "4 x 8",
+            "descanso": "90s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Leg Press 45°",
+            "series": "4 x 12",
+            "descanso": "90s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Cadeira Extensora",
+            "series": "4 x 15",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Mesa Flexora",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Stiff com Halteres",
+            "series": "3 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Panturrilha em Pé Máquina",
+            "series": "4 x 20",
+            "descanso": "45s",
+            "observacaoSerie": ""
+          }
+        ]
+      },
+      {
+        "nome": "Dia 4 - Upper",
+        "exercicios": [
+          {
+            "nome": "Desenvolvimento Ombro Barra",
+            "series": "4 x 8",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Remada Alta Barra",
+            "series": "3 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Face Pull",
+            "series": "4 x 15",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Rosca Concentrada",
+            "series": "3 x 12",
+            "descanso": "45s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Tríceps Kickback Halteres",
+            "series": "3 x 15",
+            "descanso": "45s",
+            "observacaoSerie": ""
+          }
+        ]
+      },
+      {
+        "nome": "Dia 5 - Lower",
+        "exercicios": [
+          {
+            "nome": "Agachamento Búlgaro Halteres",
+            "series": "3 x 10",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Passada com Halteres",
+            "series": "3 x 12",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Cadeira Adutora",
+            "series": "3 x 15",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Cadeira Abdutora",
+            "series": "3 x 15",
+            "descanso": "60s",
+            "observacaoSerie": ""
+          },
+          {
+            "nome": "Panturrilha Sentado",
+            "series": "4 x 20",
+            "descanso": "45s",
+            "observacaoSerie": ""
+          }
+        ]
+      }
+    ]
+  }
+}

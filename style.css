@@ -1,18 +1,117 @@
+:root{
+    --red-main: #E63946;
+    --red-dark: #B02A37;
+    --black-main: #1D1D1D;
+    --black-soft: #2B2B2B;
+    --gray-dark: #3D3D3D;
+    --gray: #A0A0A0;
+    --white-soft: #F1F1F1;
+    --muted-bg: rgba(241,241,241,0.03);
+}
+
+/* layout base */
+body {
+    background-color: var(--black-main);
+    color: var(--white-soft);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    margin: 0;
+}
+
+/* navbar */
+#navbar {
+    background-color: var(--black-soft) !important;
+    border-bottom: 1px solid var(--gray-dark);
+}
+#navbar .navbar-brand,
+#navbar .nav-link {
+    color: var(--white-soft) !important;
+}
+
+/* result and containers */
+.resultSection,
+#resultSection {
+    background-color: var(--muted-bg);
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.resultsContainer,
+#resultsContainer {
+    background-color: rgba(255,255,255,0.02);
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+/* each day card */
 .diasDeTreino {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, .1);
+    border: 1px solid var(--gray-dark);
+    padding: 12px;
+    margin-bottom: 16px;
+    background-color: var(--black-soft);
+    border-radius: 6px;
+    color: var(--white-soft);
 }
 
-.resultSection{
-    background-color: rgba(0, 0, 0, 0.1);
+/* header for day */
+.diasDeTreino h4,
+.diasDeTreino .dia-titulo {
+    color: var(--white-soft);
+    font-weight: 700;
+    margin: 0 0 8px 0;
 }
 
-.resultsContainer{
-    background-color: rgba(0, 0, 0, .1);
+/* exercise name and series */
+.ex-nome,
+.exercicio,
+.diasDeTreino p {
+    color: var(--gray);
+    margin: 0 0 6px 0;
 }
 
-.exercicio{
-    background-color: rgba(0, 0, 0, .1);
+/* emphasize series text a bit */
+.ex-series {
+    color: var(--white-soft);
+    opacity: 0.9;
+    font-size: 0.95rem;
 }
+
+/* buttons / CTA override using palette */
+.btn-primary {
+    background-color: var(--red-main) !important;
+    border-color: var(--red-dark) !important;
+    color: var(--white-soft) !important;
+}
+.btn-primary:hover {
+    background-color: var(--red-dark) !important;
+    border-color: var(--red-dark) !important;
+}
+
+/* small responsiveness helpers */
+@media (max-width: 576px) {
+    .diasDeTreino { padding: 10px; }
+    .resultSection { padding: 0.75rem; }
+}
+
+/* login section - centered vertically */
+#loginSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* botão mesmo tamanho dos inputs */
+#loginSection .btn,
+#loginSection button {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+}
+
+#loginSection .form-control,
+#loginSection input[type="text"],
+#loginSection input[type="date"] {
+    width: 100%;
+}
+
