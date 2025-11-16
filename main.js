@@ -61,13 +61,10 @@ const popularTreino = (treino) => {
         dia.exercicios.forEach(exercicio => {
             const exercicioDiv = document.createElement('div');
             exercicioDiv.classList.add('exercicio');
-            const obsLine = (exercicio.observacaoSerie && String(exercicio.observacaoSerie).trim() !== '') 
-                ?  ''
-                : `‎ ‎ ‎ ‎ ‎ ‎  Observações: ${exercicio.observacaoSerie}`;
             exercicioDiv.innerHTML = `<h5>${exercicio.nome}</h5>
                 <p>  ‎ ‎ ‎ ‎ ‎ ‎  Séries: ${exercicio.series}
                 <br> ‎ ‎ ‎ ‎ ‎ ‎  Descanso: ${exercicio.descanso}
-                <br> ${obsLine}</p>`;
+                <br> ‎ ‎ ‎ ‎ ‎ ‎  Observações: ${exercicio.observacaoSerie}`;
             resultsContainer.appendChild(exercicioDiv);
         });
     });
