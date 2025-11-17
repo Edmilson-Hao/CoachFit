@@ -118,6 +118,7 @@ body {
 
 .exercicio {
     background-color: rgba(0,0,0,0.1);
+    border: 3px solid rgba(0,0,0,0.1);
     margin-bottom: 5px;
     padding: 5px;
     padding-left: 10px;
@@ -282,4 +283,5 @@ body {
     #modalExercicioVideo iframe {
         height: 250px;
     }
+
 }
