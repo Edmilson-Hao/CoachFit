@@ -61,16 +61,61 @@ const popularTreino = (treino) => {
         dia.exercicios.forEach(exercicio => {
             const exercicioDiv = document.createElement('div');
             exercicioDiv.classList.add('exercicio');
+            exercicioDiv.style.cursor = 'pointer'; // Adiciona cursor de clique
             exercicioDiv.innerHTML = `<h5>${exercicio.nome}</h5>
                 <p>  ‎ ‎ ‎ ‎ ‎ ‎  Séries: ${exercicio.series}
                 <br> ‎ ‎ ‎ ‎ ‎ ‎  Descanso: ${exercicio.descanso}
                 <br> ‎ ‎ ‎ ‎ ‎ ‎  Observações: ${exercicio.observacaoSerie}`;
+            
+            // Adiciona evento de clique para abrir modal
+            exercicioDiv.addEventListener('click', () => {
+                abrirModalExercicio(exercicio);
+            });
+            
             resultsContainer.appendChild(exercicioDiv);
         });
     });
     
+    console.log('Treino popularizado:', treino);
+};
+
+// Função para abrir o modal com o vídeo do exercício
+const abrirModalExercicio = (exercicio) => {
+    const modal = document.getElementById('exercicioModal');
+    const modalVideo = document.getElementById('modalExercicioVideo');
+    const modalTitle = document.getElementById('modalExercicioTitle');
     
-}
+    modalTitle.innerText = exercicio.nome;
+    
+    // Converte URL do YouTube para embed se necessário
+    let embedUrl = exercicio.video;
+    if (exercicio.video.includes('youtube.com') || exercicio.video.includes('youtu.be')) {
+        embedUrl = exercicio.video.replace('watch?v=', 'embed/').replace('youtu.be/', 'youtube.com/embed/');
+    }
+    
+    modalVideo.innerHTML = `<iframe width="100%" height="400" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    
+    modal.style.display = 'block';
+};
+
+// Fechar modal ao clicar no X
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('exercicioModal');
+    const closeBtn = document.getElementById('closeModal');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
+    
+    // Fecha o modal ao clicar fora da imagem
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
 
 sobreLink.addEventListener('click', (event) => {
     event && event.preventDefault();

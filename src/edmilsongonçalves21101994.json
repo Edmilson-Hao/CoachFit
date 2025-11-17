@@ -10,37 +10,43 @@
             "nome": "Supino Inclinado Barra",
             "series": "4 x 8",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-incline-bench-press-side.mp4"
           },
           {
             "nome": "Supino Reto Halteres",
             "series": "3 x 10",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-dumbbell-bench-press-side_rqe1iTe.mp4"
           },
           {
             "nome": "Crucifixo Máquina",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-pec-fly-side.mp4"
           },
           {
             "nome": "Elevação Lateral Halteres",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-lateral-raise-front.mp4"
           },
           {
             "nome": "Tríceps Francês Halteres",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-overhead-tricep-extension-side.mp4"
           },
           {
             "nome": "Tríceps Corda",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-push-down-side.mp4"
           }
         ]
       },
@@ -51,37 +57,43 @@
             "nome": "Puxada Pronada",
             "series": "4 x 8",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-pulldown-side.mp4"
           },
           {
             "nome": "Remada Baixa Supinada",
             "series": "4 x 10",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "Realizar com pegada supinada.",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-cable-row-side.mp4"
           },
           {
             "nome": "Serrote",
             "series": "3 x 10",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-single-arm-row-side.mp4"
           },
           {
             "nome": "Crucifixo Inverso Máquina",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-reverse-fly-side.mp4"
           },
           {
-            "nome": "Rosca Scott Barra",
+            "nome": "Rosca Scott Halteres",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-preacher-curl-side.mp4"
           },
           {
             "nome": "Rosca Martelo Alternada",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "Realizar de forma alternada.",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-hammer-curl-front.mp4"
           }
         ]
       },
@@ -92,43 +104,50 @@
             "nome": "Agachamento Barra",
             "series": "4 x 8",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-squat-side.mp4"
           },
           {
             "nome": "Leg Press 45°",
             "series": "4 x 10",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-leg-press-front.mp4"
           },
           {
             "nome": "Panturrilha No Leg 45°",
             "series": "4 x 15",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-horizontal-leg-press-calf-raise-side.mp4"
           },
           {
             "nome": "Cadeira Extensora",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-leg-extension-front.mp4"
           },
           {
             "nome": "Mesa Flexora",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-hamstring-curl-side.mp4"
           },
           {
             "nome": "Cadeira Flexora",
             "series": "4 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-seated-leg-curl-side.mp4"
           },
           {
             "nome": "Cadeira Abdutora",
             "series": "3 x 12",
             "descanso": "60s",
-            "observacaoSerie": ""
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-hip-abduction-front.mp4"
           }
         ]
       }

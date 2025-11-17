@@ -75,12 +75,22 @@
                 <a href="http://wa.me/5581996487199" target="_blank" class="cta">📅 Agendar Avaliação Física</a>
             </div>
         </section>
-    <script>
-        setTimeout(() => {
-        document.body.classList.add('splash-hidden');
-        }, 2000); // 2000ms = 2 segundos
-    </script> 
-    <script src="./style.js"></script>
-    <script src="./main.js" type="module"></script>
-</body>
+
+        <!-- Modal para exibir exercício -->
+        <div id="exercicioModal" class="modal">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="modal-content">
+                <h2 id="modalExercicioTitle"></h2>
+                <div id="modalExercicioVideo"></div>
+            </div>
+        </div>
+
+        <script>
+            setTimeout(() => {
+            document.body.classList.add('splash-hidden');
+            }, 2000); // 2000ms = 2 segundos
+        </script> 
+        <script src="./style.js"></script>
+        <script src="./main.js" type="module"></script>
+    </body>
 </html>
