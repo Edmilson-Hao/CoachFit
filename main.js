@@ -62,10 +62,14 @@ const popularTreino = (treino) => {
             const exercicioDiv = document.createElement('div');
             exercicioDiv.classList.add('exercicio');
             exercicioDiv.style.cursor = 'pointer'; // Adiciona cursor de clique
+            const teste = (exercicio.observacaoSerie == "") ? "" : `<br> ‎ ‎ ‎ ‎ ‎ ‎  Observações: ${exercicio.observacaoSerie}`;
             exercicioDiv.innerHTML = `<h5>${exercicio.nome}</h5>
                 <p>  ‎ ‎ ‎ ‎ ‎ ‎  Séries: ${exercicio.series}
                 <br> ‎ ‎ ‎ ‎ ‎ ‎  Descanso: ${exercicio.descanso}
-                <br> ‎ ‎ ‎ ‎ ‎ ‎  Observações: ${exercicio.observacaoSerie}`;
+                ${teste}
+                </p>`;
+                //<br> ‎ ‎ ‎ ‎ ‎ ‎  Observações: ${exercicio.observacaoSerie}
+                
             
             // Adiciona evento de clique para abrir modal
             exercicioDiv.addEventListener('click', () => {

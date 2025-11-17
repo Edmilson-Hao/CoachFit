@@ -1,0 +1,56 @@
+nome: Supino Inclinado Barra
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-incline-bench-press-side.mp4
+
+nome: Supino Reto Halteres
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-dumbbell-bench-press-side_rqe1iTe.mp4
+
+nome: Crucifixo Máquina
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-pec-fly-side.mp4
+
+nome: Elevação Lateral Halteres
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-lateral-raise-front.mp4
+
+nome: Tríceps Francês Halteres
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-overhead-tricep-extension-side.mp4
+
+nome: Tríceps Corda
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-push-down-side.mp4
+
+nome: Puxada Pronada
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-machine-pulldown-side.mp4
+
+nome: Remada Baixa
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-cable-row-side.mp4
+
+nome: Serrote
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-single-arm-row-side.mp4
+
+nome: Crucifixo Inverso Máquina
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-reverse-fly-side.mp4
+
+nome: Rosca Scott Halteres
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-preacher-curl-side.mp4
+
+nome: Rosca Martelo
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-hammer-curl-front.mp4
+
+nome: Agachamento Barra
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-squat-side.mp4
+
+nome: Leg Press 45°
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-machine-leg-press-front.mp4
+
+nome: Panturrilha No Leg 45°
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-horizontal-leg-press-calf-raise-side.mp4
+
+nome: Cadeira Extensora
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-machine-leg-extension-front.mp4
+
+nome: Mesa Flexora
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-machine-hamstring-curl-side.mp4
+
+nome: Cadeira Flexora
+video: https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-seated-leg-curl-side.mp4
+
+nome: Cadeira Abdutora
+video: https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-hip-abduction-front.mp4
