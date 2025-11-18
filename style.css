@@ -1,12 +1,30 @@
-:root{
-    --red-main: #E63946;
-    --red-dark: #B02A37;
-    --black-main: #1D1D1D;
-    --black-soft: #2B2B2B;
-    --gray-dark: #3D3D3D;
-    --gray: #A0A0A0;
-    --white-soft: #F1F1F1;
-    --muted-bg: rgba(241,241,241,0.03);
+:root {
+    /* Cores principais da marca (baseadas no gorila) */
+    --primary-main:     #415A77;   /* Azul aço do gorila – cor principal da marca */
+    --primary-dark:     #1B263B;   /* Tom mais escuro para hover/fundos */
+    --primary-light:    #00FF9D;   /* Verde neon – CTA, destaques, energia */
+
+    /* Pretos e fundos (dark mode pesado) */
+    --black-main:       #0F0F0F;   /* Fundo principal do site */
+    --black-soft:       #0D1B2A;   /* Cards, header, footer */
+    --black-softer:     #1B263B;   /* Fundos secundários */
+
+    /* Cinzas */
+    --gray-dark:        #778DA9;   /* Textos secundários, bordas */
+    --gray:             #A0AEC0;   /* Textos menos importantes */
+    --gray-light:       #E0E1DD;   /* Texto principal (quase branco gelo) */
+
+    /* Branco suave */
+    --white-soft:       #E0E1DD;
+
+    /* Fundo sutil para overlays */
+    --muted-bg:         rgba(13, 27, 42, 0.6);  /* Baseado no #0D1B2A com transparência */
+
+    /* Cores de impacto (sotaques agressivos) */
+    --red-main:         #9D0208;   /* Vermelho sangue – alertas, intensidade */
+    --red-dark:         #730206;
+    --orange-fire:      #E85D04;   /* Botões secundários, fogo */
+    --yellow-electric:  #FFBA08;   /* Badges, conquistas */
 }
 
 /* layout base */
@@ -76,12 +94,45 @@ body {
 }
 
 /* buttons / CTA override using palette */
+/* ==================== BOTÕES PRIMÁRIOS – 100% GORILA STYLE ==================== */
 .btn-primary {
+    background-color: var(--primary-main) !important;  /* Azul aço do gorila */
+    border: 2px solid var(--primary-main) !important;
+    color: var(--white-soft) !important;
+    transition: all 0.35s ease !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background-color: #526E8C !important;              /* Azul um pouco mais claro */
+    border-color: #526E8C !important;
+    color: #ffffff !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 30px rgba(65, 90, 119, 0.5) !important;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary:focus {
+    background-color: var(--primary-light) !important; /* VERDE NEON EXPLOSIVO */
+    border-color: var(--primary-light) !important;
+    color: #000 !important;
+    box-shadow: 0 0 25px rgba(0, 255, 157, 0.6) !important;
+    transform: translateY(0) !important;
+}
+
+/* Caso tenha botões secundários que ainda usam vermelho (ex: excluir conta, deletar, etc) */
+.btn-danger,
+.btn-red {
     background-color: var(--red-main) !important;
     border-color: var(--red-dark) !important;
     color: var(--white-soft) !important;
 }
-.btn-primary:hover {
+
+.btn-danger:hover,
+.btn-red:hover {
     background-color: var(--red-dark) !important;
     border-color: var(--red-dark) !important;
 }
@@ -171,7 +222,7 @@ body {
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      transition: opacity 0.5s ease-out;
+      transition: opacity 0.1s ease-out;
       color: white;
       font-family: Arial, sans-serif;
     }
@@ -179,7 +230,7 @@ body {
     #splash img {
       max-width: 180px;
       margin-bottom: 20px;
-      animation: pulse 1.5s infinite;
+      animation: pulse 2s infinite 1s;
     }
 
     #splash .texto {
@@ -236,7 +287,7 @@ body {
     background-color: var(--black-soft);
     margin: 5% auto;
     padding: 20px;
-    border: 1px solid var(--red-main);
+    border: 1px solid var(--muted-bg);
     border-radius: 8px;
     width: 80%;
     max-width: 600px;
@@ -256,11 +307,12 @@ body {
 }
 
 .close {
-    color: var(--red-main);
+    color: var(white);
     float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    padding-right: 20px;
 }
 
 .close:hover {
