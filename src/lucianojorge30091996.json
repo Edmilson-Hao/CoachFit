@@ -1,0 +1,171 @@
+{
+  "aluno": "Luciano Jorge",
+  "aniversario": "30/09/1996",
+  "treino": {
+    "validadeTreino": "26/11/2025 - 26/12/2025",
+    "diasTreino": [
+      {
+        "nome": "Dia 1 - Push",
+        "exercicios": [
+          {
+            "nome": "Crucifixo Máquina",
+            "series": "3 x 20",
+            "descanso": "60-90s",
+            "observacaoSerie": "Aquecimento",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-pec-fly-side.mp4"
+          },
+          {
+            "nome": "Supino Inclinado Halteres",
+            "series": "4 séries - 15/12/10/08",
+            "descanso": "90-120s",
+            "observacaoSerie": "Pirâmide",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-incline-bench-press-side.mp4"
+          },
+          {
+            "nome": "Supino Reto Barra",
+            "series": "4 x 10",
+            "descanso": "90-120s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-barbell-bench-press-side_KciuhbB.mp4"
+          },
+          {
+            "nome": "Cross Over Polia Alta",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "Pico de 3 segundos na contração",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-cable-pec-fly-side.mp4"
+          },
+          {
+            "nome": "Elevação Lateral Halteres",
+            "series": "2 x 50 + 2 x 10",
+            "descanso": "60s",
+            "observacaoSerie": "2 séries de 50 reps com peso leve + 2 séries de 10 reps com carga alta",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-lateral-raise-front.mp4"
+          },
+          {
+            "nome": "Tríceps Pulley Barra V",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-bar-pushdown-front.mp4"
+          },
+          {
+            "nome": "Tríceps Testa Barra W Banco Inclinado",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-skullcrusher-side.mp4"
+          }
+        ]
+      },
+      {
+        "nome": "Dia 2 - Pull",
+        "exercicios": [
+          {
+            "nome": "Pull Down Barra (aquecimento)",
+            "series": "4 séries - 20/15/12/10",
+            "descanso": "90-120s",
+            "observacaoSerie": "Pirâmide",
+            "video": "https://www.youtube.com/embed/S1R7syvIF88"
+          },
+          {
+            "nome": "Puxada Pronada",
+            "series": "4 x 10",
+            "descanso": "90s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-pulldown-side.mp4"
+          },
+          {
+            "nome": "Remada Baixa Triângulo",
+            "series": "4 x 10",
+            "descanso": "90s",
+            "observacaoSerie": "",
+            "video": "https://www.youtube.com/embed/C9N2sCdAWJ8"
+          },
+          {
+            "nome": "Serrote (Remada unilateral halter)",
+            "series": "4 x 8",
+            "descanso": "60-90s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-single-arm-row-side.mp4"
+          },
+          {
+            "nome": "Facepull Corda",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-face-pulls-side.mp4"
+          },
+          {
+            "nome": "Rosca Scott Barra W",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-ez-bar-preacher-curl-front.mp4"
+          },
+          {
+            "nome": "Rosca Martelo Alternada",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-hammer-curl-front.mp4"
+          }
+        ]
+      },
+      {
+        "nome": "Dia 3 - Legs",
+        "exercicios": [
+          {
+            "nome": "Stiff Barra",
+            "series": "4 séries - 15/12/10/08",
+            "descanso": "90-120s",
+            "observacaoSerie": "Pirâmide",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-barbell-stiff-leg-deadlift-side.mp4"
+          },
+          {
+            "nome": "Flexora Sentada",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-seated-leg-curl-side.mp4"
+          },
+          {
+            "nome": "Agachamento Barra",
+            "series": "4 x 10",
+            "descanso": "120s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-squat-side.mp4"
+          },
+          {
+            "nome": "Extensora",
+            "series": "4 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-leg-extension-front.mp4"
+          },
+          {
+            "nome": "Cadeira Abdutora",
+            "series": "3 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-hip-abduction-front.mp4"
+          },
+          {
+            "nome": "Cadeira Adutora",
+            "series": "3 x 12",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://www.youtube.com/embed/1aATfJITaIw"
+          },
+          {
+            "nome": "Panturrilha no Leg Press 45°",
+            "series": "5 x 15",
+            "descanso": "60s",
+            "observacaoSerie": "",
+            "video": "https://www.youtube.com/embed/tWdOuSEM3NM"
+          }
+        ]
+      }
+    ]
+  }
+}
